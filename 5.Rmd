@@ -1,0 +1,28 @@
+---
+title: "proportion"
+output: html_notebook
+---
+
+```{r setup}
+library(readxl)
+Book5 <- read_excel("Book5.xlsx", range = "j11:k15")
+
+x = c(Book5$Data)
+y = c(Book5$Propotion)
+```
+
+## Can we assert that responded students represent the population ( research object )?
+### assumption
+H0: no difference in distribution between 
++ observed frequency (responded students)
++ expected frequency (proportion for each grade).  
+H1: not H0
+
+```{r}
+chisq.test(x, p=y)
+```
+P is greater than 5%.  
+H0 is not rejected.
+
+### conclusion
+Responded students represent the population.
